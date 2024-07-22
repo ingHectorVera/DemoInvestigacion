@@ -1,4 +1,4 @@
-package com.integritas.demo
+package com.integritas.demo.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

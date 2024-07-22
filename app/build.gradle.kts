@@ -5,7 +5,8 @@ plugins {
 
 android {
     namespace = "com.integritas.demo"
-    compileSdk = 34
+    compileSdk = 35
+    compileSdkPreview = "VanillaIceCream"
 
     defaultConfig {
         applicationId = "com.integritas.demo"
