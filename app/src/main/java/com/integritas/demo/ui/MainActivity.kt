@@ -1,8 +1,10 @@
 package com.integritas.demo.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Arrangement
@@ -29,7 +31,7 @@ import java.util.UUID
 //Estos Id deben de cambiarse segun si es debug o release
 //Id de cliente web: 57994672130-gp8gj8i2n2gs0raakqs7jr3okmng28u8.apps.googleusercontent.com
 //Id de cliente: 57994672130-ciut5u2vd2jvd06e0njd3pm3hr5502pj.apps.googleusercontent.com
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -78,8 +80,12 @@ fun GoogleSignInButton() {
                 val credential = result.credential
                 val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(credential.data)
                 val googleIdToken = googleIdTokenCredential.idToken
-                Log.d("Dev_Demo", "GoogleSignInButton: $googleIdToken")
-                Toast.makeText(context, "Log in exitoso!", Toast.LENGTH_SHORT).show()
+                if (googleIdToken.isNotEmpty()) {
+                    Log.d("Dev_Demo", "GoogleSignInButton: $googleIdToken")
+                    Toast.makeText(context, "Log in exitoso!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(context, MenuActivity::class.java)
+                    context.startActivity(intent)
+                }
             } catch (e: Exception) {
                 Log.e("Dev_Demo", "GoogleSignInButton: ${e.message}")
                 Toast.makeText(context, "Mensaje de error: ${e.message}", Toast.LENGTH_SHORT).show()
