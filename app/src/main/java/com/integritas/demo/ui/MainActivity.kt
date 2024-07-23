@@ -26,7 +26,7 @@ import com.integritas.demo.ui.theme.DemoInvestigacionTheme
 import kotlinx.coroutines.launch
 import java.security.MessageDigest
 import java.util.UUID
-
+//Estos Id deben de cambiarse segun si es debug o release
 //Id de cliente web: 57994672130-gp8gj8i2n2gs0raakqs7jr3okmng28u8.apps.googleusercontent.com
 //Id de cliente: 57994672130-ciut5u2vd2jvd06e0njd3pm3hr5502pj.apps.googleusercontent.com
 class MainActivity : AppCompatActivity() {
