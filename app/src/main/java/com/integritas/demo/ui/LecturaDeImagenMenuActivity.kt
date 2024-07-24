@@ -1,47 +1,20 @@
 package com.integritas.demo.ui
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.integritas.demo.ui.theme.DemoInvestigacionTheme
+import androidx.appcompat.app.AppCompatActivity
+import com.integritas.demo.databinding.ActivityLecturaDeImagenMenuBinding
 
-class LecturaDeImagenMenuActivity : ComponentActivity() {
+class LecturaDeImagenMenuActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLecturaDeImagenMenuBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            DemoInvestigacionTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+        binding = ActivityLecturaDeImagenMenuBinding.inflate(layoutInflater)
+        agregarListeners(binding)
+        setContentView(binding.root)
+    }
+
+    private fun agregarListeners(binding : ActivityLecturaDeImagenMenuBinding) {
+
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    DemoInvestigacionTheme {
-        Greeting("Android")
-    }
-}

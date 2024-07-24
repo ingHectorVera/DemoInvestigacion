@@ -2,4 +2,11 @@
     <string name="app_name">DemoInvestigacion</string>
     <string name="title_activity_menu">MenuActivity</string>
     <string name="title_activity_lectura_de_imagen_menu">LecturaDeImagenMenu</string>
+    <string name="reconocimiento_de_texto_desde_imagen">Reconocimiento de texto desde imagen</string>
+    <string name="abrir_galeria">Abrir galeria</string>
+    <string name="abrir_camara">Abrir camara</string>
+    <string name="reconocer_texto">Reconocer Texto</string>
+    <string name="imagen">Imagen capturada</string>
+    <string name="texto_reconocido">"Texto reconocido: "</string>
+    <string name="texto">Texto</string>
 </resources>
