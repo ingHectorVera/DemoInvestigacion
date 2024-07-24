@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
@@ -32,6 +33,7 @@ class LecturaDeImagenMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLecturaDeImagenMenuBinding.inflate(layoutInflater)
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+        binding.pbProgresoDeReconocimiento.visibility = View.GONE
         agregarListeners(binding)
         setContentView(binding.root)
     }
@@ -74,6 +76,8 @@ class LecturaDeImagenMenuActivity : AppCompatActivity() {
     }
 
     private fun reconocerTextoDeImagen() {
+
+        binding.pbProgresoDeReconocimiento.visibility = View.VISIBLE
         try {
             val inputImage = uri?.let { InputImage.fromFilePath(this, it) }
             val textTask : Task<Text>? = inputImage?.let {
@@ -81,9 +85,11 @@ class LecturaDeImagenMenuActivity : AppCompatActivity() {
                     .addOnSuccessListener { text ->
                         val text = text.text
                         binding.tvTextoReconocido.text = text
+                        binding.pbProgresoDeReconocimiento.visibility = View.GONE
                     }
                     .addOnFailureListener { e ->
                         Log.e("DemoInvestigacion", "reconocerTextoDeImagen: ${e.message}", )
+                        binding.pbProgresoDeReconocimiento.visibility = View.GONE
                     }
             }
         } catch (e:Exception) {
